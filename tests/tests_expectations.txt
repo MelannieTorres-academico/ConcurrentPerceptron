@@ -1,0 +1,48 @@
+The tests that start with "ruben" where taken from an AI course imparted by Ruben Stranders.
+
+The breast_cancer test was taken from:
+https://archive.ics.uci.edu/ml/machine-learning-databases/breast-cancer-wisconsin/breast-cancer-wisconsin.data
+
+Modifications where made in the breast_cancer dataset to make it linearly separable.
+Some tests in this file were repeated in order to have 60,000 evaluations and make it
+clearer on the benefits of fork-join. The tests that where copied are not used in the
+training part.
+
+
+The tests may be ran in two ways, showing or not the results.
+To show them add the flag -true at the end, example:
+java MainForkJoinPerceptron < ./tests/ruben_or.txt -true
+
+It's not recommended to add the flag in the breast_cancer.txt since it will print
+approximately 120,000 lines to the console
+
+Expected results:
+
+For ruben_linearly_separable.txt:
+0
+1
+0
+1
+1
+0
+
+For ruben_no_solution.txt and ruben_no_solution_2.txt:
+There's no solution
+
+For ruben_or.txt:
+0
+1
+0
+
+About the speed up, the "ruben" tests won't show a speed up since the number of
+tests calculated are too small to show an improvement using fork-join, it may
+even be slower using this framework. However you'll be able to appreciate the
+speed up in larger datasets, as the breast_cancer.txt.
+
+To add your own dataset please take in account the following considerations:
+* The dataset must be all numeric
+* The output must be binary (0 or 1)
+* The first number indicates the number of attributes
+* The second number indicates the number of records used to train
+* The third number indicates the number of tests to run
+* The following lines should be the training records and the tests to run
